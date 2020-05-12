@@ -12,6 +12,6 @@ public class SampleController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public String getSample() {
-		return "sample1";
+		return "sample";
 	}
 }
