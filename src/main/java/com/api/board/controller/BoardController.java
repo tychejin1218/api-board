@@ -25,7 +25,6 @@ public class BoardController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Board> getBoardList() throws Exception {
-
 		List<Board> boardList = boardService.getBoardList();
 
 		return boardList;
