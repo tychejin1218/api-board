@@ -57,6 +57,12 @@
 			<version>1.16</version>
 		</dependency>
 
+		<!-- spring-oxm -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

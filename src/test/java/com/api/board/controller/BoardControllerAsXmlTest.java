@@ -1,9 +1,11 @@
 package com.api.board.controller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-import java.io.IOException;
+import java.io.StringWriter;
+
+import javax.xml.transform.stream.StreamResult;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -24,15 +27,11 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 import com.api.board.domain.Board;
 import com.api.board.service.BoardServiceTest;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebAppConfiguration
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BoardControllerTest {
+public class BoardControllerAsXmlTest {
 
 	Logger logger = LoggerFactory.getLogger(BoardServiceTest.class);
 
@@ -41,14 +40,14 @@ public class BoardControllerTest {
 	@Autowired
 	WebApplicationContext webApplicationContext;
 
-	public String mapToJson(Object obj) throws JsonProcessingException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		return objectMapper.writeValueAsString(obj);
-	}
+	@Autowired
+	Jaxb2Marshaller jaxb2Marshaller;
 
-	public <T> T mapFromJson(String json, Class<T> clazz) throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
-		return objectMapper.readValue(json, clazz);
+	public String mapToXml(Object obj) throws Exception {
+		StringWriter writer = new StringWriter();
+		jaxb2Marshaller.marshal(obj, new StreamResult(writer));
+		String content = writer.toString();
+		return content;
 	}
 
 	@Before
@@ -65,7 +64,7 @@ public class BoardControllerTest {
 		String uri = "/board";
 
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri)
-			.accept(MediaType.APPLICATION_JSON_VALUE))
+			.accept(MediaType.APPLICATION_XML))
 			.andReturn();
 
 		int status = mvcResult.getResponse()
@@ -81,7 +80,7 @@ public class BoardControllerTest {
 		String uri = "/board/1";
 
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get(uri)
-			.accept(MediaType.APPLICATION_JSON_VALUE))
+			.accept(MediaType.APPLICATION_XML))
 			.andReturn();
 
 		int status = mvcResult.getResponse()
@@ -99,12 +98,12 @@ public class BoardControllerTest {
 		Board insertBoard = new Board();
 		insertBoard.setBoard_writer("게시글 작성자 등록");
 		insertBoard.setBoard_subject("게시글 제목 등록");
-		insertBoard.setBoard_content("게시글 제목 등록");
+		insertBoard.setBoard_content("게시글 내용 등록");
 
-		String inputJson = this.mapToJson(insertBoard);
+		String inputXml = this.mapToXml(insertBoard);
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.post(uri)
-			.contentType(MediaType.APPLICATION_JSON_VALUE)
-			.content(inputJson))
+			.contentType(MediaType.APPLICATION_XML)
+			.content(inputXml))
 			.andReturn();
 
 		int status = mvcResult.getResponse()
@@ -120,14 +119,14 @@ public class BoardControllerTest {
 		String uri = "/board/5";
 
 		Board updateBoard = new Board();
-		updateBoard.setBoard_seq(26);
+		updateBoard.setBoard_seq(5);
 		updateBoard.setBoard_subject("게시글 제목 수정");
-		updateBoard.setBoard_content("게시글 제목 수정");
+		updateBoard.setBoard_content("게시글 내용 수정");
 
-		String inputJson = this.mapToJson(updateBoard);
+		String inputXml = this.mapToXml(updateBoard);
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.put(uri)
-			.contentType(MediaType.APPLICATION_JSON_VALUE)
-			.content(inputJson))
+			.contentType(MediaType.APPLICATION_XML)
+			.content(inputXml))
 			.andReturn();
 
 		int status = mvcResult.getResponse()
@@ -150,4 +149,5 @@ public class BoardControllerTest {
 		// 요청이 성공적으로 처리되었으면 테스트 통과
 		assertEquals(200, status);
 	}
+
 }

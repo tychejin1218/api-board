@@ -1,7 +1,5 @@
 package com.api.board.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.api.board.domain.Board;
+import com.api.board.domain.Boards;
 import com.api.board.service.BoardService;
 
 @RequestMapping(value = "/board")
@@ -30,10 +29,12 @@ public class BoardController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public List<Board> getBoardList() throws Exception {
-		List<Board> boardList = boardService.getBoardList();
+	public Boards getBoardList() throws Exception {
 
-		return boardList;
+		Boards boards = new Boards();
+		boards.setBoards(boardService.getBoardList());
+
+		return boards;
 	}
 
 	/**
@@ -53,7 +54,7 @@ public class BoardController {
 	}
 
 	/**
-	 * 게시글 등록 
+	 * 게시글 등록
 	 * 
 	 * @param board
 	 * @return
@@ -93,7 +94,7 @@ public class BoardController {
 	}
 
 	/**
-	 * 게시글 삭제 
+	 * 게시글 삭제
 	 * 
 	 * @param board_seq
 	 * @return
