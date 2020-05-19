@@ -9,6 +9,10 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.api.board.interceptor.BoardInterceptor;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -23,10 +27,17 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Bean
 	public MappingJackson2HttpMessageConverter mappingJacksonHttpMessageConverter() {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-		converter.setPrettyPrint(true);
+
+		ObjectMapper objectMapper = converter.getObjectMapper();
+		objectMapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
+		objectMapper.configure(SerializationFeature.WRAP_ROOT_VALUE, true);
+
+		JaxbAnnotationModule module = new JaxbAnnotationModule();
+		objectMapper.registerModule(module);
+
 		return converter;
 	}
-	
+
 	@Bean
 	public MarshallingHttpMessageConverter marshallingHttpMessageConverter() {
 		MarshallingHttpMessageConverter converter = new MarshallingHttpMessageConverter();
@@ -34,7 +45,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		converter.setUnmarshaller(jaxb2Marshaller());
 		return converter;
 	}
-	
+
 	@Bean
 	public Jaxb2Marshaller jaxb2Marshaller() {
 		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();

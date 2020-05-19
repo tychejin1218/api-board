@@ -149,5 +149,4 @@ public class BoardControllerAsXmlTest {
 		// 요청이 성공적으로 처리되었으면 테스트 통과
 		assertEquals(200, status);
 	}
-
 }
