@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.api.board.domain.Board;
 import com.api.board.domain.Boards;
+import com.api.board.exception.ResourceNotFoundException;
 import com.api.board.service.BoardService;
 
 @RequestMapping(value = "/board")
@@ -49,6 +50,10 @@ public class BoardController {
 	public Board getBoardDetail(@PathVariable("board_seq") int board_seq) throws Exception {
 
 		Board board = boardService.getBoardDetail(board_seq);
+
+		if (board == null) {
+			throw new ResourceNotFoundException();
+		}
 
 		return board;
 	}
