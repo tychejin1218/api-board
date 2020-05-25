@@ -7,7 +7,8 @@
 >> ###### MySQL 5.7.21
 
 > #### 개발 설명
->> ###### - [Spring Boot] REST API 게시판 만들기(1) - 프로젝트 생성
+>> ###### [Spring Boot] REST API 게시판 만들기(1) - 프로젝트 생성
 >> ###### - https://tychejin.tistory.com/167
-- [Spring Boot] REST API 게시판 만들기(1) - 프로젝트 생성
-- https://tychejin.tistory.com/167
+
+>> ###### [Spring Boot] REST API 게시판 만들기(2) - MySQL + MyBatis 연동
+>> ###### - https://tychejin.tistory.com/169
