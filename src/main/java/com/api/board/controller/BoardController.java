@@ -15,6 +15,8 @@ import com.api.board.domain.Boards;
 import com.api.board.exception.ResourceNotFoundException;
 import com.api.board.service.BoardService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RequestMapping(value = "/board")
 @Controller
 public class BoardController {
@@ -28,6 +30,7 @@ public class BoardController {
 	 * @return
 	 * @throws Exception
 	 */
+	@ApiOperation(value = "게시글 목록 조회", notes = "게시글 목록을 조회합니다.")
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public Boards getBoardList() throws Exception {
@@ -45,6 +48,7 @@ public class BoardController {
 	 * @return
 	 * @throws Exception
 	 */
+	@ApiOperation(value = "게시글 상세 조회", notes = "게시글를 상세 조회합니다.")
 	@RequestMapping(value = "/{board_seq}", method = RequestMethod.GET)
 	@ResponseBody
 	public Board getBoardDetail(@PathVariable("board_seq") int board_seq) throws Exception {
@@ -65,6 +69,7 @@ public class BoardController {
 	 * @return
 	 * @throws Exception
 	 */
+	@ApiOperation(value = "게시글 등록", notes = "게시글을 등록합니다.")
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@ResponseBody
@@ -86,6 +91,7 @@ public class BoardController {
 	 * @return
 	 * @throws Exception
 	 */
+	@ApiOperation(value = "게시글 수정", notes = "게시글을 수정합니다.")
 	@RequestMapping(value = "/{board_seq}", method = RequestMethod.PUT)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
@@ -105,6 +111,7 @@ public class BoardController {
 	 * @return
 	 * @throws Exception
 	 */
+	@ApiOperation(value = "게시글 삭제", notes = "게시글을 삭제합니다.")
 	@RequestMapping(value = "/{board_seq}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody

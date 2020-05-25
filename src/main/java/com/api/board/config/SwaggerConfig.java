@@ -34,19 +34,20 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
 	private Set<String> getConsumeContentTypes() {
 		Set<String> consumes = new HashSet<>();
 		consumes.add("application/json;charset=UTF-8");
-		consumes.add("application/x-www-form-urlencoded");
+		consumes.add("application/xml;charset=UTF-8");
 		return consumes;
 	}
 
 	private Set<String> getProduceContentTypes() {
 		Set<String> produces = new HashSet<>();
 		produces.add("application/json;charset=UTF-8");
+		produces.add("application/xml;charset=UTF-8");
 		return produces;
 	}
 
 	private ApiInfo getApiInfo() {
 		return new ApiInfoBuilder().title("REST API 게시판 만들기")
-			.description("API Docs")
+			.description("REST API 게시판  문서")
 			.version("1.0")
 			.build();
 	}
