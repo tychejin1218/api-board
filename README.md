@@ -9,3 +9,5 @@
 > #### 개발 설명
 >> ###### - [Spring Boot] REST API 게시판 만들기(1) - 프로젝트 생성
 >> ###### - https://tychejin.tistory.com/167
+- [Spring Boot] REST API 게시판 만들기(1) - 프로젝트 생성
+- https://tychejin.tistory.com/167
