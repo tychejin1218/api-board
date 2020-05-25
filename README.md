@@ -1,4 +1,6 @@
 ## [Spring Boot] REST API 게시판 만들기
+- #### 게시글을 처리하는 간단한 REST API 서비스를 순차적으로 만드는 과정
+
 - #### 개발 환경
   - ##### IDE(Spring Tool Suite 4) 
   - ##### JDK 1.8
