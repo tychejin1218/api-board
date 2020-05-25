@@ -14,24 +14,24 @@
   - [Spring Boot] REST API 게시판 만들기(3) - Logback 설정
   	- https://tychejin.tistory.com/170  
   - [Spring Boot] REST API 게시판 만들기(4) - Log4jdbc 설정
-	- https://tychejin.tistory.com/171  
+  	- https://tychejin.tistory.com/171  
   - [Spring Boot] REST API 게시판 만들기(5) - Mapper 구현 및 테스트
-    	- https://tychejin.tistory.com/172  
+  	- https://tychejin.tistory.com/172  
   - [Spring Boot] REST API 게시판 만들기(6) - Interceptor 적용
   	- https://tychejin.tistory.com/173  
   - [Spring Boot] REST API 게시판 만들기(7) - Transaction 적용
-    	- https://tychejin.tistory.com/174  
+  	- https://tychejin.tistory.com/174  
   - [Spring Boot] REST API 게시판 만들기(8) - Service 구현 및 테스트
-    	- https://tychejin.tistory.com/175  
+  	- https://tychejin.tistory.com/175  
   - [Spring Boot] REST API 게시판 만들기(9) - Controller 구현 및 테스트
-    	- https://tychejin.tistory.com/176  
+  	- https://tychejin.tistory.com/176  
   - [Spring Boot] REST API 게시판 만들기(10) - XML 요청/응답 구현 및 테스트
-    	- https://tychejin.tistory.com/177  
+  	- https://tychejin.tistory.com/177  
   - [Spring Boot] REST API 게시판 만들기(11) - JSON Root Element 추가
-    	- https://tychejin.tistory.com/178  
+  	- https://tychejin.tistory.com/178  
   - [Spring Boot] REST API 게시판 만들기(12) - Content Negotiation 설정
-	- https://tychejin.tistory.com/179  
+  	- https://tychejin.tistory.com/179  
   - [Spring Boot] REST API 게시판 만들기(13) - 예외 처리 및 테스트
-    	- https://tychejin.tistory.com/180
+  	- https://tychejin.tistory.com/180
   - [Spring Boot] REST API 게시판 만들기(14) - Swagger 설정
-	- https://tychejin.tistory.com/181
+  	- https://tychejin.tistory.com/181
