@@ -29,8 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
-<<<<<<< HEAD
-/log.config.path_IS_UNDEFINED/
-=======
 /bin/
->>>>>>> branch 'master' of https://github.com/tychejin1218/api-board.git
+/log.config.path_IS_UNDEFINED/
