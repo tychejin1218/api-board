@@ -5,8 +5,8 @@
 - #### 개발 환경
   - ##### IDE(Spring Tool Suite 4) 
   - ##### JDK 1.8
-  - ##### Spring Boot 2.2.6
-  - ##### Maven 4.0.0
+  - ##### Spring Boot 2.2.7
+  - ##### Maven 3.3.9
   - ##### MySQL 5.7.21
 
 - #### 개발 설명
@@ -36,5 +36,7 @@
   	- ###### https://tychejin.tistory.com/179  
   - ##### [Spring Boot] REST API 게시판 만들기(13) - 예외 처리 및 테스트
   	- ###### https://tychejin.tistory.com/180
-  - ##### [Spring Boot] REST API 게시판 만들기(14) - Swagger 설정
+  - ##### [Spring Boot] REST API 게시판 만들기(14) - Swagger 적용
   	- ###### https://tychejin.tistory.com/181
+  - ##### [Spring Boot] REST API 게시판 만들기(15) - Lombok 적용
+  	- ###### https://tychejin.tistory.com/185
