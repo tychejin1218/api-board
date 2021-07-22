@@ -7,12 +7,14 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @ApiModel
 @XmlRootElement(name = "board")
 @XmlType(propOrder = { "board_seq", "board_re_ref", "board_re_lev", "board_re_seq", "board_writer", "board_subject", "board_content", "board_hits", "del_yn", "ins_user_id", "ins_date", "upd_user_id", "upd_date" })
 @Getter
 @Setter
+@ToString
 public class Board {
 
 	@ApiModelProperty(value = "게시글 번호")

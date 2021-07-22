@@ -3,6 +3,7 @@ package com.api.board.mapper;
 import java.util.List;
 
 import com.api.board.domain.Board;
+import com.api.board.domain.BoardFile;
 
 public interface BoardMapper {
 
@@ -31,6 +32,15 @@ public interface BoardMapper {
      * @throws Exception
      */
     public int insertBoard(Board board) throws Exception;  
+    
+    /**
+     * 게시글 첨부파일 등록 
+     * 
+     * @param board
+     * @return
+     * @throws Exception
+     */
+    public int insertBoardFile(BoardFile boardFile) throws Exception;
     
     /**
      * 게시글 수정 

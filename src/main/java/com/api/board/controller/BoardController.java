@@ -7,13 +7,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.api.board.domain.Board;
 import com.api.board.domain.Boards;
 import com.api.board.exception.ResourceNotFoundException;
 import com.api.board.service.BoardService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import io.swagger.annotations.ApiOperation;
 
@@ -76,6 +79,30 @@ public class BoardController {
 	public Board insertBoard(@RequestBody Board board) throws Exception {
 
 		boardService.insertBoard(board);
+
+		int boardSeq = board.getBoard_seq();
+
+		Board boardDetail = boardService.getBoardDetail(boardSeq);
+
+		return boardDetail;
+	}
+	
+	/**
+	 * 게시글 및 첨부파일 등록
+	 * 
+	 * @param board
+	 * @return
+	 * @throws Exception
+	 */
+	@ApiOperation(value = "게시글 및 첨부파일 등록", notes = "게시글 및 첨부파일을 등록합니다.")
+	@RequestMapping(value = "/files", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.CREATED)
+	@ResponseBody
+	public Board insertBoardFiles(@RequestParam("board") String jsonBoard, @RequestParam("files") MultipartFile[] files) throws Exception {
+		
+		Board board = new ObjectMapper().readValue(jsonBoard, Board.class);
+		
+		boardService.insertBoardFiles(board, files);
 
 		int boardSeq = board.getBoard_seq();
 
