@@ -118,7 +118,7 @@ public class BoardServiceImpl implements BoardService {
 	};
 	
 	/**
-	 * 게시글 등록
+	 * 게시글 및 첨부파일 등록
 	 * 
 	 * @param board
 	 * @return
