@@ -132,6 +132,7 @@ public class BoardServiceImpl implements BoardService {
 		insertCount = boardMapper.insertBoard(board);
 		 
 		List<BoardFile> boardFileList = getBoardFileInfo(board, files); 
+		System.out.println("boardFileList : " + boardFileList.size());
 		for (BoardFile boardFile : boardFileList) { 
 			boardMapper.insertBoardFile(boardFile); 
 		}
